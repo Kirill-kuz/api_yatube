@@ -1,5 +1,7 @@
 asgiref==3.5.2
+atomicwrites==1.4.1
 attrs==22.1.0
+colorama==0.4.6
 Django==3.2
 djangorestframework==3.12.4
 iniconfig==1.1.1
