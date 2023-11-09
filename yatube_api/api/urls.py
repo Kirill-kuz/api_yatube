@@ -6,8 +6,8 @@ from api.views import GroupViewSet, PostViewSet, CommentViewSet
 
 router = DefaultRouter()
 
-router.register(prefix='groups', viewset=GroupViewSet, )
-router.register(prefix='posts',  viewset=PostViewSet, )
+router.register(prefix='groups', viewset=GroupViewSet,)
+router.register(prefix='posts',  viewset=PostViewSet,)
 router.register(
     prefix=r'posts/(?P<post_id>\d+)/comments',
     viewset=CommentViewSet,
