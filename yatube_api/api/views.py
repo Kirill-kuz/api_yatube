@@ -1,13 +1,9 @@
+from api.permissions import IsAuthorOrReadOnly
+from api.serializers import CommentSerializer, GroupSerializer, PostSerializer
+from posts.models import Group, Post
+from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import viewsets
-
-from api.serializers import CommentSerializer
-from api.serializers import GroupSerializer
-from api.serializers import PostSerializer
-
-from api.permissions import IsAuthorOrReadOnly
-from posts.models import Group, Post
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -20,7 +16,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     """ViewSet для модели Post."""
 
-    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -31,7 +27,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     """ViewSet для модели Comment."""
 
-    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly,)
+    permission_classes = (IsAuthenticated, IsAuthorOrReadOnly)
     serializer_class = CommentSerializer
 
     def get_post(self):
